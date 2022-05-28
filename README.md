@@ -1,4 +1,5 @@
 # vueshop
+Fron-end to the "DjangoRestShop"
 
 ## Project setup
 ```
