@@ -31,9 +31,13 @@
         </div>
         
         <div class="navbar-end">
-          <router-link to="/summer" class="navbar-item">Summer Sports</router-link>
-          <router-link to="/winter" class="navbar-item">Winter Sports</router-link>
-
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Categories</a>
+            <div class="navbar-dropdown">
+              <router-link to="/summer" class="navbar-item">Summer Sports</router-link>
+              <router-link to="/winter" class="navbar-item">Winter Sports</router-link>
+            </div>
+          </div>
           <div class="navbar-item">
             <div class="buttons">
               <template v-if="$store.state.isAuthenticated">

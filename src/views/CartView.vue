@@ -33,8 +33,11 @@
                 <strong>${{ cartTotalPrice.toFixed(2) }}</strong>, {{ cartTotalLength }} items
 
                 <hr>
-
-                <router-link to="/cart/checkout" class="button is-dark">Proceed to checkout</router-link>
+                <div class="buttons">
+                    <router-link to="/cart/checkout" class="button is-dark">Proceed to checkout</router-link>
+                    <button class="button is-danger" @click="emptyCart">Empty Cart</button>
+                </div>
+                
             </div>
 
             <p v-if="!cartTotalLength">You don't have any products in your cart...</p>
@@ -66,6 +69,9 @@ export default {
     methods: {
         removeFromCart(item) {
             this.cart.items = this.cart.items.filter(i => i.product.id !== item.product.id)
+        },
+        emptyCart() {
+            this.cart.items = []
         }
     },
     computed: {
