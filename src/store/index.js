@@ -40,8 +40,9 @@ export default createStore({
     },
     setIsLoading(state, status) {
       state.isLoading = status
+      
     },
-     setToken(state, token) {
+    setToken(state, token) {
         state.token = token
         state.isAuthenticated = true
     },  
@@ -51,7 +52,6 @@ export default createStore({
     },
     clearCart(state) {
       state.cart = { items: [] }
-
       localStorage.setItem('cart', JSON.stringify(state.cart))
     },
   },

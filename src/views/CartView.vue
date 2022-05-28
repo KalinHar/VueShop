@@ -35,7 +35,7 @@
                 <hr>
                 <div class="buttons">
                     <router-link to="/cart/checkout" class="button is-dark">Proceed to checkout</router-link>
-                    <button class="button is-danger" @click="emptyCart">Empty Cart</button>
+                    <button class="button is-danger" @click="emptyCart()">Empty Cart</button>
                 </div>
                 
             </div>
@@ -72,6 +72,7 @@ export default {
         },
         emptyCart() {
             this.cart.items = []
+            localStorage.setItem('cart', JSON.stringify(this.$store.state.cart))
         }
     },
     computed: {

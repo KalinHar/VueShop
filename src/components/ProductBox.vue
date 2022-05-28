@@ -10,17 +10,39 @@
 
             <div class="buttons">
                 <router-link v-bind:to="product.get_absolute_url" class="button is-info is-light mt-4">View details</router-link>
-                <button class="button is-primary is-light mt-4">Add to Cart</button>
+                <button class="button is-primary is-light mt-4" @click="addToCart()">Add to Cart</button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { toast } from 'bulma-toast'
+
 export default {
     name: 'ProductBox',
     props: {
         product: Object
+    },
+    methods: {
+        addToCart() {
+            if (isNaN(this.quantity) || this.quantity < 1) {
+                this.quantity = 1
+            }
+            const item = {
+                product: this.product,
+                quantity: this.quantity
+            }
+            this.$store.commit('addToCart', item)
+            toast({
+                message: 'The product was added to the cart',
+                type: 'is-success',
+                dismissible: true,
+                pauseOnHover: true,
+                duration: 2000,
+                position: 'bottom-right',
+            })
+        }
     }
 }
 </script>
